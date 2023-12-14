@@ -1,0 +1,9 @@
+{
+     "apps": [
+          {
+               "name": "alter-buddy-backend",
+               "script": "npm",
+               "args": "start"
+          }
+     ]
+}
