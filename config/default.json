@@ -1,0 +1,8 @@
+{
+     "DB_PATH": "mongodb+srv://mistryaksh1998:Oi0NKcWPa7iLFfEi@cluster0.wkykxg8.mongodb.net/?retryWrites=true&w=majority",
+     "JWT_SECRET": "JSONWEBTOKENSECRET",
+     "JWT_EXPIRE": "3d",
+     "DB_PASS": "Oi0NKcWPa7iLFfEi",
+     "DB_USER": "mistryaksh1998",
+     "NODE_NO_WARNINGS": "1"
+}
