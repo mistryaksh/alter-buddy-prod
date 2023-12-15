@@ -192,7 +192,7 @@ export class AuthenticationController implements IController {
                if (!username || !password) {
                     return UnAuthorized(res, "missing fields");
                }
-               const mentor = await Mentor.findOne({ username });
+               const mentor = await Mentor.findOne({ "auth.username": username });
                if (!mentor) {
                     return UnAuthorized(res, "no user found");
                }
@@ -202,7 +202,7 @@ export class AuthenticationController implements IController {
                if (mentor.accountStatus.block) {
                     return UnAuthorized(res, "your account has been blocked by admin");
                }
-               if (!bcrypt.compareSync(password, mentor.auth.password)) {
+               if (password !== mentor.auth.password) {
                     return UnAuthorized(res, "wrong password");
                }
                const token = jwt.sign(
@@ -213,7 +213,7 @@ export class AuthenticationController implements IController {
                     { expiresIn: process.env.JWT_EXPIRE || config.get("JWT_EXPIRE") }
                );
                await User.findByIdAndUpdate({ _id: mentor._id }, { $set: { online: true } });
-               return Ok(res, { token, user: `${mentor.contact.mobile} is logged in` });
+               return Ok(res, { token, message: `${mentor.contact.mobile} is logged in` });
           } catch (err) {
                return UnAuthorized(res, err);
           }
