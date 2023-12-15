@@ -35,7 +35,6 @@ export class AccountController implements IController {
                handler: this.GetMentorById,
                method: "GET",
                path: "/mentor/profile/:id",
-               middleware: [AuthForAdmin],
           });
      }
 
