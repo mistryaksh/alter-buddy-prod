@@ -8,6 +8,8 @@ import {
      HomeController,
      MentorController,
      FaqController,
+     VideoCallController,
+     SessionController,
 } from "./controller";
 import { IController } from "interface";
 
@@ -42,4 +44,6 @@ export const registerRoutesV1 = (express: Express) => {
      routesHandler(express, new BlogController());
      routesHandler(express, new FeaturesController());
      routesHandler(express, new FaqController());
+     routesHandler(express, new SessionController());
+     routesHandler(express, new VideoCallController());
 };

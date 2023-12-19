@@ -6,3 +6,5 @@ export * from "./category.controller";
 export * from "./blog.controller";
 export * from "./feature.controller";
 export * from "./faq.controller";
+export * from "./video-call.controller";
+export * from "./session.controller";
