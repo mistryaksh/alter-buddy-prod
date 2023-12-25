@@ -3,7 +3,10 @@
      "version": "1.0.0",
      "description": "",
      "main": "index.js",
-     "keywords": [],
+     "engines": {
+          "node": "21.2.0",
+          "npm": "10.2.3"
+     },
      "author": "",
      "license": "ISC",
      "devDependencies": {
