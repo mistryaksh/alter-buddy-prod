@@ -6,7 +6,6 @@ import morgan from "morgan";
 import { errorHandler, notFoundMiddleware } from "./middleware";
 import { registerRoutesV1 } from "api";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
 import config from "config";
 
 class App {
@@ -19,11 +18,8 @@ class App {
           this.routes();
           this.useErrorHandler();
           this.useNotFoundMiddleware();
-          this.useDotEnv();
      }
-     public async useDotEnv() {
-          dotenv.config();
-     }
+
      // Configure Express middleware.
      private middleware(): void {
           this.express.use(bodyParser.json());
@@ -55,7 +51,7 @@ class App {
 
      private async connectDb() {
           try {
-               await mongoose.connect(process.env.DB_PATH || config.get("DB_PATH"), {});
+               await mongoose.connect(config.get("DB_PATH"), {});
                console.log("connected to database");
           } catch (err) {
                return console.log(err);

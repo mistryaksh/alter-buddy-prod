@@ -4,6 +4,7 @@ import { IController, IControllerRoutes } from "interface";
 import { BadRequest, Ok, UnAuthorized } from "utils";
 import jwt from "jsonwebtoken";
 import { VideoSdkService } from "services/video-sdk.service";
+import config from "config";
 
 export class VideoCallController implements IController {
      public routes: IControllerRoutes[] = [];
@@ -28,11 +29,11 @@ export class VideoCallController implements IController {
      public async GenerateVideoCallToken(req: Request, res: Response) {
           try {
                const payload = {
-                    apikey: process.env.REACT_APP_VIDEO_SDK_KEY,
+                    apikey: config.get("REACT_APP_VIDEO_SDK_KEY"),
                     permissions: [`allow_join`], // `ask_join` || `allow_mod`
                };
 
-               const token = jwt.sign(payload, process.env.REACT_APP_VIDEO_SDK_SECRET, {
+               const token = jwt.sign(payload, config.get("REACT_APP_VIDEO_SDK_SECRET"), {
                     expiresIn: "120m",
                     algorithm: "HS256",
                });
@@ -44,11 +45,11 @@ export class VideoCallController implements IController {
      public async CreateMeeting(req: Request, res: Response) {
           try {
                const payload = {
-                    apikey: process.env.REACT_APP_VIDEO_SDK_KEY,
+                    apikey: config.get("REACT_APP_VIDEO_SDK_KEY"),
                     permissions: [`allow_join`], // `ask_join` || `allow_mod`
                };
 
-               const token = jwt.sign(payload, process.env.REACT_APP_VIDEO_SDK_SECRET, {
+               const token = jwt.sign(payload, config.get("REACT_APP_VIDEO_SDK_SECRET"), {
                     expiresIn: "120m",
                     algorithm: "HS256",
                });

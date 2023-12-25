@@ -91,7 +91,7 @@ export const Forbidden = (res: Response, message: string) => {
 };
 
 export const getJwtToken = (body: any) => {
-     return Jwt.sign(body, process.env.JWT_SECRET ?? Config.get("JWT_SECRET"), {
+     return Jwt.sign(body, Config.get("JWT_SECRET"), {
           expiresIn: Config.get<number>("JWT_EXPIRE"),
      });
 };

@@ -69,8 +69,8 @@ export class AuthenticationController implements IController {
                     {
                          id: user._id,
                     },
-                    process.env.JWT_SECRET,
-                    { expiresIn: process.env.JWT_EXPIRE || config.get("JWT_EXPIRE") }
+                    config.get("JWT_SECRET"),
+                    { expiresIn: config.get("JWT_EXPIRE") }
                );
                await User.findByIdAndUpdate({ _id: user._id }, { $set: { online: true } });
                return Ok(res, { token, user: `${user.mobile} is logged in` });
@@ -114,8 +114,8 @@ export class AuthenticationController implements IController {
                     {
                          id: newUser._id,
                     },
-                    process.env.JWT_SECRET,
-                    { expiresIn: process.env.JWT_EXPIRE || config.get("JWT_EXPIRE") }
+                    config.get("JWT_SECRET"),
+                    { expiresIn: config.get("JWT_EXPIRE") }
                );
                return Ok(res, {
                     token,
@@ -162,8 +162,8 @@ export class AuthenticationController implements IController {
                          {
                               id: newMentor._id,
                          },
-                         process.env.JWT_SECRET,
-                         { expiresIn: process.env.JWT_EXPIRE || config.get("JWT_EXPIRE") }
+                         config.get("JWT_SECRET"),
+                         { expiresIn: config.get("JWT_EXPIRE") }
                     );
                     return Ok(res, `${newMentor.name.firstName} is signed up successfully`);
                }
@@ -209,8 +209,8 @@ export class AuthenticationController implements IController {
                     {
                          id: mentor._id,
                     },
-                    process.env.JWT_SECRET,
-                    { expiresIn: process.env.JWT_EXPIRE || config.get("JWT_EXPIRE") }
+                    config.get("JWT_SECRET"),
+                    { expiresIn: config.get("JWT_EXPIRE") }
                );
                await User.findByIdAndUpdate({ _id: mentor._id }, { $set: { online: true } });
                return Ok(res, { token, message: `${mentor.contact.mobile} is logged in` });
@@ -240,8 +240,8 @@ export class AuthenticationController implements IController {
                          {
                               id: user._id,
                          },
-                         process.env.JWT_SECRET,
-                         { expiresIn: process.env.JWT_EXPIRE || config.get("JWT_EXPIRE") }
+                         config.get("JWT_SECRET"),
+                         { expiresIn: config.get("JWT_EXPIRE") }
                     );
                     await User.findByIdAndUpdate({ _id: user._id }, { $set: { online: true } });
                     return Ok(res, { token, user: `${user.mobile} is logged in` });
