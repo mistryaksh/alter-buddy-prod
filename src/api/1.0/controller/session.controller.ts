@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { IControllerRoutes, IController } from "interface";
-import { AuthForMentor } from "middleware";
+import { AuthForMentor, AuthForUser } from "middleware";
 import { Chat } from "model";
 import { Ok, UnAuthorized, getTokenFromHeader, verifyToken } from "utils";
 
@@ -18,6 +18,12 @@ export class SessionController implements IController {
                method: "GET",
                path: "/mentor/calls",
                middleware: [AuthForMentor],
+          });
+          this.routes.push({
+               handler: this.GetUserMyCalls,
+               method: "GET",
+               path: "/user/calls",
+               middleware: [AuthForUser],
           });
      }
      public async GetChatWithRoomId(req: Request, res: Response) {
@@ -44,7 +50,8 @@ export class SessionController implements IController {
                          model: "Mentor",
                          select: "name contact subCategory specialists category",
                          populate: ["subCategory", "category"],
-                    });
+                    })
+                    .sort({ createdAt: -1 });
                return Ok(res, chat);
           } catch (err) {
                return UnAuthorized(res, err);

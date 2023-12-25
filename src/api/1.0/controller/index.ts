@@ -8,3 +8,4 @@ export * from "./feature.controller";
 export * from "./faq.controller";
 export * from "./video-call.controller";
 export * from "./session.controller";
+export * from "./mentor-call.controller";

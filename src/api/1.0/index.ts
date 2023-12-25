@@ -10,6 +10,7 @@ import {
      FaqController,
      VideoCallController,
      SessionController,
+     MentorCallSchedule,
 } from "./controller";
 import { IController } from "interface";
 
@@ -46,4 +47,5 @@ export const registerRoutesV1 = (express: Express) => {
      routesHandler(express, new FaqController());
      routesHandler(express, new SessionController());
      routesHandler(express, new VideoCallController());
+     routesHandler(express, new MentorCallSchedule());
 };

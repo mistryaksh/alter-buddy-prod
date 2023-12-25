@@ -7,3 +7,4 @@ export * from "./blog.model";
 export * from "./top-mentor.model";
 export * from "./faq.model";
 export * from "./chat.model";
+export * from "./call-schedule.model";
